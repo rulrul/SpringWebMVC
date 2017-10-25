@@ -1,3 +1,7 @@
+/*
+ * @Author Rully Andhika a.k.a jarul
+ * www.heyrul.com-2017
+ */
 package com.heyrul.springwebmvc.daos;
 
 import java.util.List;
