@@ -1,0 +1,49 @@
+package com.heyrul.springwebmvc.config;
+
+import java.util.Properties;
+
+import javax.sql.DataSource;
+
+import org.apache.commons.dbcp2.BasicDataSource;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.core.env.Environment;
+import org.springframework.orm.hibernate5.HibernateTransactionManager;
+import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
+
+public class ApplicationConfig {
+	
+	@Autowired
+	private Environment environment;
+	
+	@Bean(name = "dataSource")
+	public DataSource getDataSource() {
+		BasicDataSource dataSource = new BasicDataSource();
+		dataSource.setDriverClassName("");
+		dataSource.setUrl("");
+		dataSource.setUsername("");
+		dataSource.setPassword("");
+		return dataSource;
+	}
+	
+	@Bean(name = "sessionFactory")
+	public LocalSessionFactoryBean getSessionFactory() {
+		LocalSessionFactoryBean lsfb = new LocalSessionFactoryBean();
+		lsfb.setDataSource(getDataSource());
+		
+		Properties properties = new Properties();
+		properties.put("hibernate.show_sql", environment.getProperty("hibernate.show_sql"));
+		properties.put("hibernate.hbm2ddl.auto", environment.getProperty("hibernate.hbm2ddl.auto"));
+		lsfb.setHibernateProperties(properties);
+		
+		return lsfb;
+	}
+	
+	@Bean(name = "transactionManager")
+	public HibernateTransactionManager getTransactionManager() {
+		HibernateTransactionManager htm = new HibernateTransactionManager();
+		htm.setSessionFactory(getSessionFactory().getObject());
+		return htm;
+	}
+
+}
