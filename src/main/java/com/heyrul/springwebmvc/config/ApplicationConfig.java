@@ -19,6 +19,8 @@ import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+import com.heyrul.springwebmvc.models.Karyawan;
+
 @Configuration
 @PropertySource({ "classpath:database.properties" })
 @EnableTransactionManagement
@@ -47,6 +49,8 @@ public class ApplicationConfig {
 		properties.put("hibernate.show_sql", environment.getProperty("hibernate.show_sql"));
 		properties.put("hibernate.hbm2ddl.auto", environment.getProperty("hibernate.hbm2ddl.auto"));
 		lsfb.setHibernateProperties(properties);
+		
+		lsfb.setAnnotatedClasses(Karyawan.class);
 		
 		return lsfb;
 	}
