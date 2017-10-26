@@ -29,15 +29,6 @@
 								<a href="#addkaryawanDialog" class="btn btn-primary" data-toggle="modal">Tambah Data</a>
 							</div>
 							
-							<div class="form-group col-sm-7">
-								<div class="col-sm-6 col-sm-offset-4">
-									<input class="form-control" type="text" name="keyword" value="" placeholder="Masukkan kata kunci..">
-								</div>
-								<div class="col-sm-2">
-									<button class="btn btn-default">Cari</button>
-								</div>
-							</div>
-							
 						</div>
 					</div>
 				</div>
@@ -62,7 +53,7 @@
 						<td><c:out value="${data.jabatan}"/></td>
 						<td><c:out value="${data.gaji}"/></td>
 						<td><c:out value="${data.alamat}"/></td>
-						<td align="center"><button class="btn btn-primary btn-sm">Ubah</button> <button id="hapus" class="btn btn-danger btn-sm">Hapus</button></td>
+						<td align="center"><a href="#" id="ubah" class="btn btn-primary btn-sm">Ubah</a> <a href="/deletekaryawandata?nip=<c:out value='${data.nip}'/>" id="hapus" class="btn btn-danger btn-sm">Hapus</a></td>
 					</tr>
 					</c:forEach>
 				</tbody>
@@ -142,10 +133,6 @@
 				
 			});
 			
-			$("#hapus").on("click", function() {
-				console.log("hapus");
-			});
-			
 			// To-give-border-for-the-table
 			$('#maintable').removeClass('display').addClass('table table-striped table-bordered');
 			
@@ -156,7 +143,7 @@
 				$.ajax({
 					type: "POST",
 					url: url,
-					data: $("#adduserform").serialize(), // serialiize the form's elments
+					data: $("#addkaryawanform").serialize(), // serialiize the form's elments
 					success: function(data) {
 						// $("#maintable").ajax.reload(null, false); // reload table buat data json
 						$("#adduserDialog").modal("hide"); // close modal

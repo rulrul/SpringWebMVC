@@ -33,10 +33,10 @@ public class ApplicationConfig {
 	@Bean(name = "dataSource")
 	public DataSource getDataSource() {
 		BasicDataSource dataSource = new BasicDataSource();
-		dataSource.setDriverClassName("");
-		dataSource.setUrl("");
-		dataSource.setUsername("");
-		dataSource.setPassword("");
+		dataSource.setDriverClassName(environment.getProperty("database.driver"));
+		dataSource.setUrl(environment.getProperty("database.url"));
+		dataSource.setUsername(environment.getProperty("database.username"));
+		dataSource.setPassword(environment.getProperty("database.password"));
 		return dataSource;
 	}
 	

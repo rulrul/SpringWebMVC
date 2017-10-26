@@ -37,19 +37,19 @@ public class WebAppController {
 		return mav;
 	}
 	
-	@RequestMapping(value = "insertkaryawandata", method=RequestMethod.POST)
+	@RequestMapping(value = "/insertkaryawandata", method=RequestMethod.POST)
 	public String insertKaryawan(@ModelAttribute("karyawan") Karyawan karyawan) {
 		karyawanService.insertKaryawan(karyawan);
 		return "redirect:datalist";
 	}
 	
-	@RequestMapping(value = "updatekaryawandata", method=RequestMethod.POST)
+	@RequestMapping(value = "/updatekaryawandata", method=RequestMethod.POST)
 	public String updateKaryawan(@ModelAttribute("karyawan") Karyawan karyawan) {
 		karyawanService.updateKaryawan(karyawan);
 		return "redirect:datalist";
 	}
 	
-	@RequestMapping(value = "deletekaryawandata", method=RequestMethod.GET)
+	@RequestMapping(value = "/deletekaryawandata", method=RequestMethod.GET)
 	public String deleteKaryawan(@RequestParam(value = "nip", required = false) String nip) {
 		karyawanService.deleteKaryawan(nip);
 		return "redirect:datalist";
