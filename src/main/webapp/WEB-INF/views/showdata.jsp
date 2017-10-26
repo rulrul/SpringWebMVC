@@ -53,7 +53,7 @@
 						<td><c:out value="${data.jabatan}"/></td>
 						<td><c:out value="${data.gaji}"/></td>
 						<td><c:out value="${data.alamat}"/></td>
-						<td align="center"><a href="#" id="ubah" class="btn btn-primary btn-sm">Ubah</a> <a href="/deletekaryawandata?nip=<c:out value='${data.nip}'/>" id="hapus" class="btn btn-danger btn-sm">Hapus</a></td>
+						<td align="center"><a href="#" id="ubah" class="btn btn-primary btn-sm">Ubah</a> <a href="deletekaryawandata?nip=<c:out value='${data.nip}'/>" id="hapus" class="btn btn-danger btn-sm">Hapus</a></td>
 					</tr>
 					</c:forEach>
 				</tbody>
@@ -81,7 +81,7 @@
 								<input class="form-control" type="text" name="jabatan" value="" placeholder="Masukkan jabatan..">
 							</div>
 							<div class="form-group col-lg-6">
-								<input class="form-control" type="password" name="gaji" value="" placeholder="Masukkan gaji..">
+								<input class="form-control" type="text" name="gaji" value="" placeholder="Masukkan gaji..">
 							</div>
 							<div class="form-group col-lg-12">
 								<input class="form-control" type="text" name="alamat" value="" placeholder="Masukkan alamat..">
@@ -146,7 +146,7 @@
 					data: $("#addkaryawanform").serialize(), // serialiize the form's elments
 					success: function(data) {
 						// $("#maintable").ajax.reload(null, false); // reload table buat data json
-						$("#adduserDialog").modal("hide"); // close modal
+						$("#addkaryawanDialog").modal("hide"); // close modal
 					}
 				});
 				
